@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "25238909896",
+    "project_id": "mad-final-project-1aa11",
+    "storage_bucket": "mad-final-project-1aa11.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25238909896:android:ed87139246b9ad90e946fd",
+        "android_client_info": {
+          "package_name": "msku.ceng.madlab.finalproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdIrGjPoTwoJcKtqCprU4x3hELt-dsGVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
