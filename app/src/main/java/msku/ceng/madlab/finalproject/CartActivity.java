@@ -3,6 +3,7 @@ package msku.ceng.madlab.finalproject;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,7 +17,7 @@ import java.util.List;
 public class CartActivity extends AppCompatActivity {
 
     private ListView cartListView;
-    private ProductAdapter adapter;
+    private CartAdapter adapter;
     private Cart cart;
 
     @Override
@@ -32,12 +33,17 @@ public class CartActivity extends AppCompatActivity {
 
         cartListView = findViewById(R.id.cartListView);
         Button clearCartButton = findViewById(R.id.clearCartButton);
+        TextView priceText = findViewById(R.id.priceTextView);
 
         cart = CartSingleton.getInstance();
 
         List<Product> cartItems = cart.getCartItems();
-        adapter = new ProductAdapter(this, cartItems, cart);
+        adapter = new CartAdapter(this, cartItems, cart);
         cartListView.setAdapter(adapter);
+
+        double totalPrice = cart.getTotalPrice();
+
+        priceText.setText("Total price= " + totalPrice);
 
         clearCartButton.setOnClickListener(v -> {
             cart.clearCart();
@@ -46,4 +52,5 @@ public class CartActivity extends AppCompatActivity {
         });
 
     }
+
 }

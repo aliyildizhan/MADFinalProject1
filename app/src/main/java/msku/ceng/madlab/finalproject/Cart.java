@@ -17,11 +17,25 @@ public class Cart {
         Log.w("TAG", "addToCart: " + product);
     }
 
+    public void deleteFromCart(Product product) {
+        cartItems.remove(product);
+    }
+
     public List<Product> getCartItems() {
         return cartItems;
     }
 
     public void clearCart() {
         cartItems.clear();
+    }
+
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for (int i=0; i<cartItems.size(); i++) {
+            Product product = cartItems.get(i);
+            totalPrice += product.getPrice();
+        }
+
+        return totalPrice;
     }
 }

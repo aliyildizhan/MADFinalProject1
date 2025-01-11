@@ -2,8 +2,11 @@ package msku.ceng.madlab.finalproject;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -45,15 +48,17 @@ public class ProductsActivity extends AppCompatActivity {
             return insets;
         });
 
+        Button backBtn = findViewById(R.id.backBtn);
         listView = findViewById(R.id.productList);
         productList = new ArrayList<>();
         cart = CartSingleton.getInstance();
         adapter = new ProductAdapter(this, productList, cart);
         listView.setAdapter(adapter);
-        String str = "Fruits";
+        Intent intent =getIntent();
+        String category = intent.getStringExtra("category");
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference docRef = db.collection("Categories").document(str)
+        CollectionReference docRef = db.collection("Categories").document(category)
                 .collection("Products");
 
         docRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -71,6 +76,16 @@ public class ProductsActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductsActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 }

@@ -14,11 +14,11 @@ import com.google.firebase.firestore.auth.User;
 import java.util.List;
 
 
-public class ProductAdapter extends ArrayAdapter<Product> {
+public class CartAdapter extends ArrayAdapter<Product> {
 
     private Cart cart;
 
-    public ProductAdapter(Context context, List<Product> products, Cart cart) {
+    public CartAdapter(Context context, List<Product> products, Cart cart) {
         super(context, 0, products);
         this.cart = cart;
     }
@@ -26,23 +26,26 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.product_row, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.cart_row, parent, false);
         }
 
         Product product = getItem(position);
 
         TextView nameTextView = convertView.findViewById(R.id.nameTextView);
         TextView priceTextView = convertView.findViewById(R.id.priceTextView);
-        Button addToCartButton = convertView.findViewById(R.id.addToCartButton);
+        Button deleteToCartButton = convertView.findViewById(R.id.deleteToCartButton);
 
         nameTextView.setText(product.getName());
         priceTextView.setText(String.valueOf(product.getPrice()));
 
-        addToCartButton.setOnClickListener(v -> {
-            cart.addToCart(product);
-            Log.d("TAG", "getView: "+product);
+        deleteToCartButton.setOnClickListener(v -> {
+            cart.deleteFromCart(product);
+            Log.d("TAG", "getView: " + product);
+            notifyDataSetChanged();
         });
 
         return convertView;
     }
+
+
 }

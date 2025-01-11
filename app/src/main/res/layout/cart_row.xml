@@ -24,8 +24,8 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/addToCartButton"
+        android:id="@+id/deleteToCartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+" />
+        android:text="-" />
 </LinearLayout>
