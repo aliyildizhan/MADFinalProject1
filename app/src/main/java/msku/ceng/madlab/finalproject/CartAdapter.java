@@ -33,10 +33,12 @@ public class CartAdapter extends ArrayAdapter<Product> {
 
         TextView nameTextView = convertView.findViewById(R.id.nameTextView);
         TextView priceTextView = convertView.findViewById(R.id.priceTextView);
+        TextView quantityTextView = convertView.findViewById(R.id.quantityTextView);
         Button deleteToCartButton = convertView.findViewById(R.id.deleteToCartButton);
 
         nameTextView.setText(product.getName());
         priceTextView.setText(String.valueOf(product.getPrice()));
+        quantityTextView.setText(String.valueOf(product.getQuantity()));
 
         deleteToCartButton.setOnClickListener(v -> {
             cart.deleteFromCart(product);
