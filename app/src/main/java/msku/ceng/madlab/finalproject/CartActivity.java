@@ -49,6 +49,7 @@ public class CartActivity extends AppCompatActivity {
             cart.clearCart();
             adapter.notifyDataSetChanged();
             Toast.makeText(CartActivity.this, "Cart cleared!", Toast.LENGTH_SHORT).show();
+            recreate();
         });
 
     }

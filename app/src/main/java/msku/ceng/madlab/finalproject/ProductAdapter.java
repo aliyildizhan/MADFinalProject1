@@ -79,4 +79,10 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         }
         return bitmap;
     }
+
+    public void setProducts(List<Product> products) {
+        clear();
+        addAll(products);
+        notifyDataSetChanged();
+    }
 }
