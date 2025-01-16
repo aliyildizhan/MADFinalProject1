@@ -72,4 +72,8 @@ public class Cart {
         return inCart;
     }
 
+    public boolean isCartEmpty() {
+        return cartItems.isEmpty();
+    }
+
 }

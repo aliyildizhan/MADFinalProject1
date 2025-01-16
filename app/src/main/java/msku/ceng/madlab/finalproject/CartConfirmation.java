@@ -3,8 +3,10 @@ package msku.ceng.madlab.finalproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
 
-public class CartActivity extends AppCompatActivity {
+public class CartConfirmation extends AppCompatActivity {
 
     private ListView cartListView;
     private CartAdapter adapter;
@@ -26,17 +28,25 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.activity_cart_confirmation);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
+
+        Spinner spinner = findViewById(R.id.my_spinner);
+
+        ArrayAdapter<CharSequence> sadapter = ArrayAdapter.createFromResource(this,
+                R.array.dropdown_items, android.R.layout.simple_spinner_item);
+
+        sadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(sadapter);
+
         cartListView = findViewById(R.id.cartListView);
-        Button clearCartButton = findViewById(R.id.clearCartButton);
         TextView priceText = findViewById(R.id.priceTextView);
-        Button confirmCartButton = findViewById(R.id.confirmCartButton);
 
         cart = CartSingleton.getInstance();
 
@@ -48,26 +58,17 @@ public class CartActivity extends AppCompatActivity {
 
         priceText.setText("Total price= " + totalPrice + "TL");
 
-        clearCartButton.setOnClickListener(v -> {
-            cart.clearCart();
-            adapter.notifyDataSetChanged();
-            Toast.makeText(CartActivity.this, "Cart cleared!", Toast.LENGTH_SHORT).show();
-            recreate();
-        });
+        Button confirm = findViewById(R.id.confirm);
 
-        confirmCartButton.setOnClickListener(new View.OnClickListener() {
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!cart.isCartEmpty()) {
-                    Intent intent = new Intent(CartActivity.this, CartConfirmation.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(CartActivity.this, "Cart is empty!" , Toast.LENGTH_SHORT).show();
-                }
+                cart.clearCart();
+                Toast.makeText(CartConfirmation.this, "Order Confirmed!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(CartConfirmation.this, CategoryActivity.class);
+                startActivity(intent);
             }
         });
 
     }
-
 }

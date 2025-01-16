@@ -94,8 +94,6 @@ public class SearchResultFragment extends Fragment {
                 QuerySnapshot querySnapshot = (QuerySnapshot) result;
                 for (DocumentSnapshot doc : querySnapshot) {
                     Product product = doc.toObject(Product.class);
-                    // product.setId(doc.getId()); // If needed
-                    // product.setCategory(doc.getReference().getParent().getId()); // Infer category
                     searchResultsList.add(product);
                 }
             }

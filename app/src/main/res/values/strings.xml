@@ -2,4 +2,9 @@
     <string name="app_name">Final Project</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="dropdown_items">
+        <item>Cash</item>
+        <item>Credit Card At Door</item>
+        <item>Online Credit Card</item>
+    </string-array>
 </resources>

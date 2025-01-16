@@ -12,13 +12,14 @@
     <ListView
         android:id="@+id/cartListView"
         android:layout_width="match_parent"
-        android:layout_height="456dp" />
+        android:layout_height="502dp" />
 
     <TextView
         android:id="@+id/priceTextView"
         android:layout_width="match_parent"
         android:layout_height="38dp"
-        android:text="" />
+        android:text="Text"
+        android:textSize="26dp"/>
 
     <Button
         android:id="@+id/clearCartButton"

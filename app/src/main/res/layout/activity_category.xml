@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?> <!--Ege Bayrak -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -21,7 +21,7 @@
             android:titleTextColor="@android:color/white"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
+        <!--Ege Bayrak -->
         <FrameLayout
             android:id="@+id/fragmentContainer"
             android:layout_width="match_parent"
@@ -59,6 +59,7 @@
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:contentDescription="Vegetables"
+                    android:src="@drawable/vegetable"
                      />
 
                 <TextView
@@ -81,6 +82,7 @@
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:contentDescription="Fruits"
+                    android:src="@drawable/fruits"
                      />
 
                 <TextView
@@ -103,6 +105,7 @@
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:contentDescription="Drinks"
+                    android:src="@drawable/drink"
                      />
 
                 <TextView
@@ -125,6 +128,7 @@
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:contentDescription="Bakery"
+                    android:src="@drawable/bakery"
                      />
 
                 <TextView
@@ -147,6 +151,7 @@
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:contentDescription="Dairy Foods"
+                    android:src="@drawable/dairy"
                      />
 
                 <TextView
@@ -169,6 +174,7 @@
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:contentDescription="Staple Foods"
+                    android:src="@drawable/food"
                      />
 
                 <TextView
@@ -191,6 +197,7 @@
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:contentDescription="Snacks"
+                    android:src="@drawable/snack"
                      />
 
                 <TextView
@@ -213,6 +220,7 @@
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:contentDescription="Breakfast"
+                    android:src="@drawable/breakfast"
                      />
 
                 <TextView
@@ -235,6 +243,7 @@
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:contentDescription="Cleaning"
+                    android:src="@drawable/cleaning"
                      />
 
                 <TextView

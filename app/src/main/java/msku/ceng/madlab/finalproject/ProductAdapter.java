@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.auth.User;
 
@@ -49,7 +50,6 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         new Thread(() -> {
             Bitmap bitmap = downloadImage(imageUrl);
             if (bitmap != null) {
-                // Update the ImageView on the main thread
                 new Handler(Looper.getMainLooper()).post(() -> urlImageView.setImageBitmap(bitmap));
             }
         }).start();
@@ -60,6 +60,8 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         addToCartButton.setOnClickListener(v -> {
             cart.addToCart(product);
             Log.d("TAG", "getView: "+product);
+            Context context = getContext();
+            Toast.makeText(context,  product.getName() + " added to the cart!", Toast.LENGTH_SHORT).show();
         });
 
         return convertView;

@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.auth.User;
 
@@ -45,6 +46,7 @@ public class CartAdapter extends ArrayAdapter<Product> {
         TextView priceTextView = convertView.findViewById(R.id.priceTextView);
         TextView quantityTextView = convertView.findViewById(R.id.quantityTextView);
         Button deleteToCartButton = convertView.findViewById(R.id.deleteToCartButton);
+        Button addToCartButton = convertView.findViewById(R.id.addToCartButton);
 
         nameTextView.setText(product.getName());
         priceTextView.setText(String.valueOf(product.getPrice()));
@@ -63,6 +65,16 @@ public class CartAdapter extends ArrayAdapter<Product> {
             cart.deleteFromCart(product);
             Log.d("TAG", "getView: " + product);
             Context context = getContext();
+            Toast.makeText(context,  product.getName() + " deleted from the cart!", Toast.LENGTH_SHORT).show();
+            if (context instanceof Activity) {
+                ((Activity) context).recreate();
+            }
+            notifyDataSetChanged();
+        });
+        addToCartButton.setOnClickListener(v -> {
+            cart.addToCart(product);
+            Context context = getContext();
+            Toast.makeText(context,  product.getName() + " added to the cart!", Toast.LENGTH_SHORT).show();
             if (context instanceof Activity) {
                 ((Activity) context).recreate();
             }

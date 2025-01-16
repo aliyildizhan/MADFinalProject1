@@ -1,35 +1,38 @@
 package msku.ceng.madlab.finalproject;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
+
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {
-    ImageView btn;
+    ImageView btnVegetables;
+    ImageView btnFruits;
+    ImageView btnDrinks;
+    ImageView btnBakery;
+    ImageView btnDairy;
+    ImageView btnStaple;
+    ImageView btnSnacks;
+    ImageView btnBreakfast;
+    ImageView btnCleaning;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,8 @@ public class CategoryActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        btn = findViewById(R.id.vegetables);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnVegetables = findViewById(R.id.vegetables);
+        btnVegetables.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ProductsActivity.class);
@@ -56,8 +59,8 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btn = findViewById(R.id.fruits);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnFruits = findViewById(R.id.fruits);
+        btnFruits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ProductsActivity.class);
@@ -66,8 +69,8 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btn = findViewById(R.id.drinks);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnDrinks = findViewById(R.id.drinks);
+        btnDrinks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ProductsActivity.class);
@@ -76,8 +79,8 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btn = findViewById(R.id.bakery);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnBakery = findViewById(R.id.bakery);
+        btnBakery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ProductsActivity.class);
@@ -86,8 +89,8 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btn = findViewById(R.id.dairy);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnDairy = findViewById(R.id.dairy);
+        btnDairy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ProductsActivity.class);
@@ -96,8 +99,8 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btn = findViewById(R.id.staple);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnStaple = findViewById(R.id.staple);
+        btnStaple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ProductsActivity.class);
@@ -106,8 +109,8 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btn = findViewById(R.id.snacks);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnSnacks = findViewById(R.id.snacks);
+        btnSnacks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ProductsActivity.class);
@@ -116,8 +119,8 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btn = findViewById(R.id.breakfast);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnBreakfast = findViewById(R.id.breakfast);
+        btnBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ProductsActivity.class);
@@ -126,8 +129,8 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btn = findViewById(R.id.cleaning);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnCleaning = findViewById(R.id.cleaning);
+        btnCleaning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, ProductsActivity.class);
@@ -189,4 +192,5 @@ public class CategoryActivity extends AppCompatActivity {
                 .addToBackStack(null) // Optional: adds the transaction to the back stack
                 .commit();
     }
+
 }

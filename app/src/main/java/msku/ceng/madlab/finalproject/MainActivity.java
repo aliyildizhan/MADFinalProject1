@@ -43,27 +43,11 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(MainActivity.this, RegisterActivity.class);
+                Intent i = new Intent(MainActivity.this, CategoryActivity.class);
                 startActivity(i);
                 finish();
             }
         }, TIME_OUT);
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("Categories").document("Vegetables")
-                .collection("Products").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        Log.d(TAG, document.getId() + " => " + document.getData());
-                    }
-                } else {
-                    Log.w(TAG, "Error getting documents.", task.getException());
-                }
-            }
-        });
     }
 
-    }
+}
